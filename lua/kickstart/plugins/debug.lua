@@ -144,5 +144,53 @@ return {
         detached = vim.fn.has 'win32' == 0,
       },
     }
+
+    dap.adapters.chrome = {
+      type = 'executable',
+      command = 'node',
+      args = '../../../vscode-debug/chromeDebug.js',
+    }
+
+    dap.configurations.javascriptreact = { -- change this to javascript if needed
+      {
+        name = 'Javascript React',
+        type = 'chrome',
+        request = 'attach',
+        program = '${file}',
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = 'inspector',
+        port = 9222,
+        webRoot = '${workspaceFolder}',
+      },
+    }
+
+    dap.configurations.typescriptreact = { -- change to typescript if needed
+      {
+        name = 'Typescript React',
+        type = 'chrome',
+        request = 'attach',
+        program = '${file}',
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = 'inspector',
+        port = 9222,
+        webRoot = '${workspaceFolder}',
+      },
+    }
+
+    dap.configurations.typescript = { -- change to typescript if needed
+      {
+        name = 'Typescript',
+        type = 'chrome',
+        request = 'attach',
+        program = '${file}',
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = 'inspector',
+        port = 9222,
+        webRoot = '${workspaceFolder}',
+      },
+    }
   end,
 }
